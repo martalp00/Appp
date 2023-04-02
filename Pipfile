@@ -8,6 +8,7 @@ django = "*"
 docker = "*"
 
 [dev-packages]
+pylint = "2.17.1"
 
 [requires]
 python_version = "3.10"
