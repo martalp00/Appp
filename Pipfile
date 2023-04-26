@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 docker = "*"
+requests = "*"
 
 [dev-packages]
 pylint = "2.17.1"
