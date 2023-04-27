@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados de la búsqueda</title>
+</head>
+<body>
+  <h1>Resultados de la búsqueda:</h1>
+  {% if artists %}
+    <ul>
+      {% for artist in artists %}
+        {% url 'albums' artist.name|urlencode as url %}
+        <li><a href="{{ url }}">{{ artist.name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No artists found.</p>
+  {% endif %}
+</body>
+</html>
