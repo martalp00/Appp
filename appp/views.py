@@ -4,6 +4,13 @@ Este módulo contiene las vistas para la aplicación web "Appp"
 import requests
 
 from django.shortcuts import render
+from django.http import HttpResponse
+from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
+
+metric_count_artist_searches_total = Counter(
+    'metric_count_artist_searches_total', 
+    'Número de búsquedas de artistas en total'
+)
 
 def search(request):
     return render(request, 'search.html')
@@ -14,6 +21,7 @@ def search_results(request):
     response = requests.get(url)
     data = response.json()
     artists = data['results']['artistmatches']['artist']
+    metric_count_artist_searches_total.inc()
     if artists:
         return render(request, 'search_results.html', {'artists': artists})
     else:
@@ -25,3 +33,6 @@ def albums(request, artist_name):
     data = response.json()
     albums = data['topalbums']['album']
     return render(request, 'albums.html', {'albums': albums})
+
+def metrics(request):
+    return HttpResponse(generate_latest(), content_type=CONTENT_TYPE_LATEST)
