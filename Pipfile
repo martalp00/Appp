@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 docker = "*"
 requests = "*"
+prometheus-client = "*"
 
 [dev-packages]
 pylint = "2.17.1"
