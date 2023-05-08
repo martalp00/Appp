@@ -3,6 +3,7 @@ build:
 
 start:
 	docker run -d --name appp_container -p 8000:8000 appp_image
+	./start_grafana.sh
 
 stop:
 	docker stop appp_container
