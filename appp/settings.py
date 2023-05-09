@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+$qectr!25_8ubv7-7(hxy@5baruuo62)^0@!t%+7r36(930l0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0"]
+ALLOWED_HOSTS = ["web", "0.0.0.0"]
 
 
 # Application definition
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'requests'
+    'requests',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +122,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Prometheus configuration
+
+PROMETHEUS_METRICS_ENABLED = True
