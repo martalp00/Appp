@@ -1,5 +1,6 @@
 start:
 	docker-compose up --build -d
+	./start_grafana.sh
 
 stop:
 	docker-compose down
