@@ -1,9 +1,20 @@
 start:
 	docker-compose up --build -d
-	./start_grafana.sh
+	/etc/init.d/grafana-server start
+
+start-jenkins:
+	systemctl start jenkins
+	./scripts/ngrok_start.sh
 
 stop:
 	docker-compose down
+	/etc/init.d/grafana-server stop
+
+stop-jenkins:
+	systemctl stop jenkins
+
+stop-ngrok:
+	./scripts/ngrok_stop.sh
 
 migrate:
 	docker-compose run web python manage.py migrate
