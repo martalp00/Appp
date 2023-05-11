@@ -2,4 +2,4 @@ Prueba a ver si jenkins arranca sin tener ejecutandose jenkins ni ngrok FALLO
 Prueba a ver si jenkins arranca sin tener ejecutandose ngrok FALLO
 Prueba a ver si jenkins arranca ejecutandose ambos BIEN
 Prueba a ver si jenkins arranca sin tener ejecutandose jenkins pero si ngrok FALLO
-Prueba jenkins arranca el job
+Prueba jenkins arranca el job FAIL
