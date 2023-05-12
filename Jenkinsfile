@@ -1,16 +1,18 @@
 pipeline {
-    agent {
-        docker {
-            image 'appp_web'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
 
     stages {
-        stage('Compilar') {
+        stage('Build') {
             steps {
-                sh 'docker-compose up --force-recreate --build -d web'
+                sh 'docker build -t appp_image:latest .'
+                sh 'docker run -d --name appp_container -p 8000:8000 appp_image'
+            }
+        }
 
+        stage('Stop') {
+            steps {
+                sh 'docker stop appp_container'
+                sh 'docker rm appp_container'
             }
         }
     }
