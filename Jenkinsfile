@@ -1,19 +1,23 @@
 pipeline {
     agent any
-
+  
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t appp_image:latest .'
-                sh 'docker run -d --name appp_container -p 8000:8000 appp_image'
+                script {
+                    docker.build('appp_image', '-f Dockerfile .')
+                }
             }
         }
 
-        stage('Stop') {
+        stage('Run') {
             steps {
-                sh 'docker stop appp_container'
-                sh 'docker rm appp_container'
+                script {
+                    docker.withRegistry('') {
+                    docker.image('appp_image').run('-p 8000:8000 -d')
+                    }
+                }
             }
         }
     }
-}
+    }
