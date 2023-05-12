@@ -1,24 +1,23 @@
 pipeline {
     agent any
-
+  
     stages {
-        stage('Compilar') {
+        stage('Build') {
             steps {
-                sh 'docker-compose up --build -d'
+                script {
+                    docker.build('appp_image', '-f Dockerfile .')
+                }
             }
         }
 
-        stage('Isort') {
+        stage('Run') {
             steps {
-                sh 'make isort'
-            }
-        }
-
-        stage('Pylint') {
-            steps {
-                sh 'make pylint'
+                script {
+                    docker.withRegistry('') {
+                    docker.image('appp_image').run('-p 8000:8000 -d')
+                    }
+                }
             }
         }
     }
-}
-
+    }
