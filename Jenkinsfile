@@ -1,13 +1,10 @@
 pipeline {
     agent any
-    triggers {
-        githubPush()
-    }
 
     stages {
         stage('Compilar') {
             steps {
-                echo "Hello"
+                sh 'docker-compose up --build -d'
             }
         }
     }
