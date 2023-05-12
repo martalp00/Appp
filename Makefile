@@ -1,5 +1,5 @@
 start:
-	docker-compose up --build -d
+	docker-compose up --force-recreate --build -d web
 	/etc/init.d/grafana-server start
 
 start-jenkins:
