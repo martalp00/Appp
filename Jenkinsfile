@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            dockerfile {
+                filename 'Dockerfile'
+            }
+        }
+    }
 
     stages {
         stage('Compilar') {
