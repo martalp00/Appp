@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Compilar') {
             steps {
-                sh 'docker-compose up --build -d'
+                sh 'cd /home/marta/Escritorio/TFG/appp && docker-compose up --build -d'
             }
         }
     }
