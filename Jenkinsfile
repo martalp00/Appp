@@ -4,19 +4,19 @@ pipeline {
     stages {
         stage('Compilar') {
             steps {
-                sh 'docker-compose up --build -d'
+                sh 'cd /home/marta/Escritorio/TFG/appp && docker-compose up --build -d'
             }
         }
 
         stage('Isort') {
             steps {
-                sh 'make isort'
+                sh 'cd /home/marta/Escritorio/TFG/appp && make isort'
             }
         }
 
         stage('Pylint') {
             steps {
-                sh 'make pylint'
+                sh 'cd /home/marta/Escritorio/TFG/appp && make pylint'
             }
         }
     }
