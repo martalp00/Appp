@@ -1,23 +1,43 @@
 pipeline {
     agent any
-  
+
     stages {
-        stage('Build') {
+        stage('Preparacion') {
             steps {
-                script {
-                    docker.build('appp_image', '-f Dockerfile .')
-                }
+                // Detener y liberar el puerto 9090 y 8000 si está en uso
+                sh '/var/lib/jenkins/.local/bin/pipenv run make clean-ports'
             }
         }
 
-        stage('Run') {
+        stage('Instalar dependencias') {
             steps {
-                script {
-                    docker.withRegistry('') {
-                    docker.image('appp_image').run('-p 8000:8000 -d')
-                    }
-                }
+                sh 'pip install pipenv'
+                sh '/var/lib/jenkins/.local/bin/pipenv install'
+            }
+        }
+
+        stage('Compilar APPP') {
+            steps {
+                sh '/var/lib/jenkins/.local/bin/pipenv run make start-pipeline' 
+            }
+        }
+        
+        stage('Stop APPP') {
+            steps {
+                sh '/var/lib/jenkins/.local/bin/pipenv run make stop-pipeline'
+            }
+        }
+
+        stage('Isort') {
+            steps {
+                sh '/var/lib/jenkins/.local/bin/pipenv run make isort'
+            }
+        }
+
+        stage('Pylint') {
+            steps {
+                sh '/var/lib/jenkins/.local/bin/pipenv run make pylint'
             }
         }
     }
-    }
+}

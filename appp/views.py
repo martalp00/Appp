@@ -1,11 +1,11 @@
 """
 Este módulo contiene las vistas para la aplicación web "Appp"
 """
+# pylint: disable=import-error
 import requests
-
-from django.shortcuts import render
 from django.http import HttpResponse
-from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
+from django.shortcuts import render
+from prometheus_client import CONTENT_TYPE_LATEST, Counter, generate_latest
 
 metric_count_artist_searches_total = Counter(
     'metric_count_artist_searches_total', 
@@ -13,26 +13,32 @@ metric_count_artist_searches_total = Counter(
 )
 
 def search(request):
+    # pylint: disable=missing-function-docstring
     return render(request, 'search.html')
 
-def search_results(request):
+def search_artist(request):
+    # pylint: disable=missing-function-docstring
     artist = request.GET.get('artist')
-    url = f'https://ws.audioscrobbler.com/2.0/?method=artist.search&artist={artist}&api_key=6364e51db1e7ec45657136ed75292af0&format=json'
-    response = requests.get(url)
+    url = (f'https://ws.audioscrobbler.com/2.0/?method=artist.search&artist={artist}&api_key='
+           + '6364e51db1e7ec45657136ed75292af0&format=json')
+    response = requests.get(url, timeout=5)
     data = response.json()
     artists = data['results']['artistmatches']['artist']
     metric_count_artist_searches_total.inc()
     if artists:
-        return render(request, 'search_results.html', {'artists': artists})
-    else:
-        return render(request, 'search_results.html', {'error': 'No artist found.'})
+        return render(request, 'search_artist.html', {'artists': artists})
+    return render(request, 'search_artist.html', {'error': 'No artist found.'})
 
-def albums(request, artist_name):
-    url = f'https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist_name}&api_key=6364e51db1e7ec45657136ed75292af0&format=json'
-    response = requests.get(url)
+def artist_albums(request, artist_name):
+    # pylint: disable=missing-function-docstring
+    url = ('https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist='
+           + f'{artist_name}&api_key=6364e51db1e7ec45657136ed75292af0&format=json'
+    )
+    response = requests.get(url, timeout=5)
     data = response.json()
     albums = data['topalbums']['album']
-    return render(request, 'albums.html', {'albums': albums})
+    return render(request, 'artist_albums.html', {'albums': albums})
 
-def metrics(request):
+def metrics():
+    # pylint: disable=missing-function-docstring
     return HttpResponse(generate_latest(), content_type=CONTENT_TYPE_LATEST)

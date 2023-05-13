@@ -8,7 +8,7 @@
   <h1>Busca un artista</h1>
   <p>¿Quieres saber todos los albumes que tiene tu artista o banda favorita?</p>
   <p>Haz click en el buscador y, ¡encuéntralos todos!</p>
-  <form method="GET" action="{% url 'search_results' %}">
+  <form method="GET" action="{% url 'search_artist' %}">
   {% csrf_token %}
     <input type="text" name="artist" required placeholder="Busca un/una artista">
     <button type="submit">Buscar</button>
