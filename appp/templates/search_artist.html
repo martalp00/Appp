@@ -9,7 +9,7 @@
   {% if artists %}
     <ul>
       {% for artist in artists %}
-        {% url 'albums' artist.name|urlencode as url %}
+        {% url 'artist_albums' artist.name|urlencode as url %}
         <li><a href="{{ url }}">{{ artist.name }}</a></li>
       {% endfor %}
     </ul>
