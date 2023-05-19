@@ -1,1 +1,7 @@
 *PASOS PARA INICIAR EL PROYECTO*
+
+git clone <ulr_repository> : Para clonar el repositorio en tu local
+pipenv install : Para instalar todas las dependencias
+make start-jenkins : Si vas a hacer cambios, para que puedan ser detectados por Jenkins
+make start : Para compilar todo el proyecto (construir imagen y ejecutar los contenedores)
+make stop : Para parar los contenedores que estan en ejecución

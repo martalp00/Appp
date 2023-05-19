@@ -31,7 +31,8 @@ def search_artist(request):
 
 def artist_albums(request, artist_name):
     # pylint: disable=missing-function-docstring
-    url = (f'https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist={artist_name}&api_key=6364e51db1e7ec45657136ed75292af0&format=json'
+    url = ('https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist='
+           f'{artist_name}&api_key=6364e51db1e7ec45657136ed75292af0&format=json'
     )
     response = requests.get(url, timeout=10)
     data = response.json()
@@ -40,4 +41,5 @@ def artist_albums(request, artist_name):
 
 def metrics(request):
     # pylint: disable=missing-function-docstring
+    # pylint: disable=unused-argument
     return HttpResponse(generate_latest(), content_type=CONTENT_TYPE_LATEST)
