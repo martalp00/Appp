@@ -10,7 +10,7 @@ start-pipeline:
 	docker-compose up --force-recreate --build -d web
 
 stop-pipeline:
-	docker-compose down
+	docker-compose down --rmi local
 
 clean-ports:
 	./scripts/clean_ports.sh
