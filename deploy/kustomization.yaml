@@ -1,0 +1,5 @@
+resources:
+  - django.yaml
+  - prometheus.yaml
+  - secret.yaml
+  - configmap-prometheus.yaml
