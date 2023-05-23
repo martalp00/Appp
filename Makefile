@@ -42,13 +42,6 @@ build:
 	docker tag appp-web:latest martalp00/appp:proj
 	docker push martalp00/appp:proj
 
-secret:
-	kubectl create secret docker-registry docker-credentials \
-  		--docker-server=https://index.docker.io/v1/ \
-  		--docker-username=martalp00 \
-  		--docker-password=Malope.13 \
-  		--docker-email=martalo1304@gmail.com
-
 k8s:
 	minikube start
 	kubectl apply -k deploy/

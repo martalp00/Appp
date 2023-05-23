@@ -15,5 +15,5 @@ url="$url/github-webhook/"
 # Imprimir la URL generada
 echo "------------------------------------------------------------------------------------"
 echo "PASOS A SEGUIR:"
-echo "Copiar la url generada en https://github.com/martalp00/Appp/settings/hooks/413951945"
+echo "Copiar la url generada en https://github.com/martalp00/Appp/settings/hooks"
 echo "URL generada por ngrok: $url"
