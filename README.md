@@ -33,13 +33,13 @@ con Github.
 
 5. Ya puedes acceder a cualquiera de estas url y visualizar todo.
 
-  [Página principal de la aplicación](http://0.0.0.0:8000/)
+  * [Página principal de la aplicación](http://0.0.0.0:8000/)
 
-  [Trabajos de Jenkins](http://localhost:8080/blue/organizations/jenkins/appp/activity)
+  * [Trabajos de Jenkins](http://localhost:8080/blue/organizations/jenkins/appp/activity)
 
-  [Métrica en el servidor de Prometheus](http://localhost:9090/graph?g0.expr=metric_count_artist_searches_total&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h)
+  * [Métrica en el servidor de Prometheus](http://localhost:9090/graph?g0.expr=metric_count_artist_searches_total&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h)
 
-  [Métrica vista desde gráficos en Grafana](http://localhost:3000/d/c021cade-112b-454f-929a-c21617ff5c90/app?orgId=1&from=now-5m&to=now)
+  * [Métrica vista desde gráficos en Grafana](http://localhost:3000/d/c021cade-112b-454f-929a-c21617ff5c90/app?orgId=1&from=now-5m&to=now)
 
 
 ## Despliegue de la aplicación con Kubernetes
@@ -79,10 +79,10 @@ configuración de la conexión de Jenkins con Github.
 
 5. Ya puedes acceder a cualquiera de estas url y visualizar todo.
 
-  [Página principal de la aplicación](http://192.168.49.2:31800/)
+  * [Página principal de la aplicación](http://192.168.49.2:31800/)
 
-  [Trabajos de Jenkins](http://localhost:8080/blue/organizations/jenkins/appp/activity/)
+  * [Trabajos de Jenkins](http://localhost:8080/blue/organizations/jenkins/appp/activity/)
 
-  [Métrica en el servidor de Prometheus](http://192.168.49.2:31900/graph?g0.expr=metric_count_artist_searches_total&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h)
+  * [Métrica en el servidor de Prometheus](http://192.168.49.2:31900/graph?g0.expr=metric_count_artist_searches_total&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h)
 
-  [Métrica vista desde gráficos en Grafana](http://localhost:3000/d/f54a0203-cadd-4df6-9ee4-0bd36db59b81/appp-k8s?from=now-5m&to=now&orgId=1)
+  * [Métrica vista desde gráficos en Grafana](http://localhost:3000/d/f54a0203-cadd-4df6-9ee4-0bd36db59b81/appp-k8s?from=now-5m&to=now&orgId=1)
